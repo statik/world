@@ -7,6 +7,7 @@ SHA256SUM="e18e2877e18a447eb5d94f5efbec375366d82af6443c6a83a93c62657a7b1c32"
 CACHE="${CACHE:-/tmp}/whilp_world"
 
 main () {
+set -x
   tmp="${CACHE}/tmp"
   bin="${CACHE}/bin"
   export PATH="${PATH}:${bin}"
