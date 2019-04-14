@@ -1,4 +1,19 @@
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
+
 sh_binary(
     name = "extract",
-    src = "extract.sh",
+    srcs = ["extract.sh"],
+    data = [":site"],
+)
+
+pkg_tar(
+    name = "site",
+    srcs = [
+    ]
+)
+
+sh_test(
+    name = "test",
+    srcs = ["test.sh"],
+    data = [":extract"],
 )
