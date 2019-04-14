@@ -1,0 +1,7 @@
+genrule(
+    name = "buildozer",
+    cmd = "cp $< $@",
+    outs = ["buildozer.bin"],
+    srcs = ["@com_github_bazelbuild_buildtools_buildozer//file"],
+    executable = True,
+)

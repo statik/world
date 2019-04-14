@@ -1,0 +1,7 @@
+genrule(
+    name = "shfmt",
+    cmd = "cp $< $@",
+    outs = ["shfmt.bin"],
+    srcs = ["@com_github_mvdan_sh_shfmt//file"],
+    executable = True,
+)

@@ -1,12 +1,32 @@
 def github_files():
     return dict(
-        com_github_genuinetools_img_bin = github_file(
-            owner = "genuinetools",
-            repo = "img",
-            release = "v0.5.6",
-            src = "img-linux-amd64",
-            sha256 = "c3d7debf55f1fff6e5d26715546fab9803fa799d97ef25fc71ed88615d3c662e",
+        com_github_bazelbuild_buildtools_buildozer = github_file(
+            owner = "bazelbuild",
+            repo = "buildtools",
+            release = "0.22.0",
+            src = "buildozer",
+            sha256 = "7750fe5bfb1247e8a858f3c87f63a5fb554ee43cb10efc1ce46c2387f1720064",
+            executable = True,
         ),
+
+        com_github_bazelbuild_buildtools_buildifier = github_file(
+            owner = "bazelbuild",
+            repo = "buildtools",
+            release = "0.22.0",
+            src = "buildifier",
+            sha256 = "25159de982ec8896fc8213499df0a7003dfb4a03dd861f90fa5679d16faf0f99",
+            executable = True,
+        ),
+
+        com_github_mvdan_sh_shfmt = github_file(
+            owner = "mvdan",
+            repo = "sh",
+            release = "v2.6.4",
+            src = "shfmt_v2.6.4_linux_amd64",
+            sha256 = "2fbf21300150a14cf908c2e3cfd85a54ba8fcc1eba4349a9aad67aaa07d73e86",
+            executable = True,
+        ),
+ 
     )
 
 def github_file(**attrs):
