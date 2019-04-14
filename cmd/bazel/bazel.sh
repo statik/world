@@ -16,11 +16,11 @@ main () {
   mkdir -p "$bin"
   mkdir -p "$tmp"
   
-  fetch "$URL" "$tmp"/bazel
-  checksum "$SHA256SUM" "$tmp"/bazel
+  fetch "$URL" "${tmp}/bazel
+  checksum "$SHA256SUM" "${tmp}/bazel
   
-  chmod a+x "$tmp"/bazel
-  mv "$tmp"/bazel "$bin"/bazel
+  chmod a+x "${tmp}/bazel
+  mv "${tmp}/bazel "${bin}/bazel"
   
   exec bazel "$@"
 }
@@ -35,7 +35,9 @@ fetch () {
 checksum () {
   sha256sum="$1"
   src="$2"
+  (
   printf "${sha256sum}\t${src}\n" | sha256sum -c
+  ) >/dev/null 2>&1
 }
 
 main "$@"
