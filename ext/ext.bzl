@@ -1,9 +1,11 @@
 load("//ext:github_files.bzl", "expanded_github_files")
 load("//ext:github_archives.bzl", "expanded_github_archives")
+load("//ext:url_files.bzl", "expanded_url_files")
 
 def files():
     _files = {}
     _files.update(expanded_github_files())
+    _files.update(expanded_url_files())
     return _files
 
 def archives():

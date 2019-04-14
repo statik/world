@@ -4,4 +4,5 @@ genrule(
     outs = ["buildozer.bin"],
     srcs = ["@com_github_bazelbuild_buildtools_buildozer//file"],
     executable = True,
+    visibility = ["//visibility:public"],
 )

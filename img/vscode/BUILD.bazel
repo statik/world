@@ -1,0 +1,34 @@
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
+
+sh_binary(
+    name = "build",
+    srcs = ["build.sh"],
+    data = [":context.tar"],
+)
+
+sh_binary(
+    name = "run",
+    srcs = ["run.sh"],
+)
+
+pkg_tar(
+    name = "context",
+    srcs = [
+        "Dockerfile",
+    ],
+    deps = [
+        ":bin",
+    ]
+)
+
+pkg_tar(
+    name = "bin",
+    mode = "0755",
+    files = {
+        "//cmd/buildifier": "./bin/buildifier",
+        "//cmd/shfmt": "./bin/shfmt",
+        "//cmd/buildozer": "./bin/buildozer",
+        "//cmd/bazel": "./bin/bazel",
+        "@bazel_gazelle//cmd/gazelle": "./bin/gazelle",
+    }
+)

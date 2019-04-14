@@ -1,0 +1,8 @@
+genrule(
+    name = "bazel",
+    cmd = "cp $< $@",
+    outs = ["bazel.bin"],
+    srcs = ["@com_github_bazelbuild_bazel_bazel//file"],
+    executable = True,
+    visibility = ["//visibility:public"],
+)

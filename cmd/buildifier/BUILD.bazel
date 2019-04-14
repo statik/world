@@ -4,4 +4,5 @@ genrule(
     outs = ["buildifier.bin"],
     srcs = ["@com_github_bazelbuild_buildtools_buildifier//file"],
     executable = True,
+    visibility = ["//visibility:public"],
 )

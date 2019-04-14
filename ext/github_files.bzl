@@ -26,7 +26,17 @@ def github_files():
             sha256 = "2fbf21300150a14cf908c2e3cfd85a54ba8fcc1eba4349a9aad67aaa07d73e86",
             executable = True,
         ),
- 
+
+        com_github_bazelbuild_bazel_bazel = github_file(
+            owner = "bazelbuild",
+            repo = "bazel",
+            release = "0.24.1",
+            src = "bazel-0.24.1-linux-x86_64",
+            sha256 = "e18e2877e18a447eb5d94f5efbec375366d82af6443c6a83a93c62657a7b1c32",
+            executable = True,
+        ),
+
+
     )
 
 def github_file(**attrs):
