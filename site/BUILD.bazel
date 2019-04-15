@@ -9,15 +9,14 @@ sh_binary(
 genrule(
     name = "tar",
     outs = ["site.tar"],
-    cmd = "$(location :build) $@",
-    tools = [":build"],
+    cmd = "$(location :build) $(location //cmd/hugo) $@",
+    tools = [":build", "//cmd/hugo"],
 )
 
 sh_binary(
     name = "build",
     srcs = ["build.sh"],
     data = ["//cmd/hugo"] + glob(["**/*"]),
-    args = ["$(location //cmd/hugo)"]
 )
 
 sh_test(

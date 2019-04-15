@@ -7,7 +7,7 @@ sh_binary(
 )
 
 sh_binary(
-    name = "run",
+    name = "vscode",
     srcs = ["run.sh"],
 )
 
@@ -34,8 +34,9 @@ pkg_tar(
     },
     symlinks = {
         "./bin/docker": "../docker/docker",
+        "./bin/python": "/usr/bin/python3",
     },
     deps = [
-        "@com_docker_download_docker//file",
+        "@com_docker_download_docker//file:docker.tgz",
     ]
 )

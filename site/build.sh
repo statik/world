@@ -3,6 +3,7 @@
 set -euo pipefail
 
 main () {
+    echo "$@"
     hugo="$1"
     dst="$2"
     find . -ls
