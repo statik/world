@@ -10,4 +10,6 @@ RUN apt-get update \
     build-essential \
     python3
 
+# python3 -> python? python2?
+
 USER coder

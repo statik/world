@@ -29,6 +29,7 @@ pkg_tar(
         "//cmd/shfmt": "./bin/shfmt",
         "//cmd/buildozer": "./bin/buildozer",
         "//cmd/bazel": "./bin/bazel",
+        "//cmd/hugo": "./bin/hugo",
         "@bazel_gazelle//cmd/gazelle": "./bin/gazelle",
     },
     symlinks = {
