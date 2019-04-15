@@ -3,7 +3,14 @@ load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 sh_binary(
     name = "extract",
     srcs = ["extract.sh"],
-    data = [":site"],
+    data = [":site.tar"],
+)
+
+genrule(
+    name = "tar",
+    outs = ["site.tar"],
+    cmd = "$(location :build) $@",
+    tools = [":build"],
 )
 
 sh_binary(
