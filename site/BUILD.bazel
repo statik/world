@@ -7,7 +7,7 @@ sh_binary(
 )
 
 sh_binary(
-    name = "build"",
+    name = "build",
     srcs = ["build.sh"],
     data = ["//cmd/hugo"] + glob(["**/*"]),
 )
