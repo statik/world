@@ -16,7 +16,7 @@ genrule(
 sh_binary(
     name = "build",
     srcs = ["build.sh"],
-    data = ["//cmd/hugo"] + glob(["**/*"]),
+    data = ["//cmd/hugo:hugo.bin"] + glob(["**/*"]),
 )
 
 sh_test(
