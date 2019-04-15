@@ -1,0 +1,8 @@
+genrule(
+    name = "hugo",
+    cmd = "cp $< $@",
+    outs = ["hugo.bin"],
+    srcs = ["@com_github_gohugoio_hugo_hugo//:hugo"],
+    executable = True,
+    visibility = ["//visibility:public"],
+)

@@ -1,6 +1,7 @@
 load("//ext:github_files.bzl", "expanded_github_files")
 load("//ext:github_archives.bzl", "expanded_github_archives")
 load("//ext:url_files.bzl", "expanded_url_files")
+load("//ext:url_archives.bzl", "expanded_url_archives")
 
 def files():
     _files = {}
@@ -11,6 +12,7 @@ def files():
 def archives():
     _archives = {}
     _archives.update(expanded_github_archives())
+    _archives.update(expanded_url_archives())
     return _archives
 
 def ext_dependencies():

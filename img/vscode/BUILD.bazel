@@ -30,5 +30,11 @@ pkg_tar(
         "//cmd/buildozer": "./bin/buildozer",
         "//cmd/bazel": "./bin/bazel",
         "@bazel_gazelle//cmd/gazelle": "./bin/gazelle",
-    }
+    },
+    symlinks = {
+        "./bin/docker": "../docker/docker",
+    },
+    deps = [
+        "@com_docker_download_docker//file",
+    ]
 )
