@@ -3,8 +3,8 @@
 set -euo pipefail
 
 main () {
-    dst="$1"
-    hugo="$PWD/cmd/hugo"
+    hugo="$1"
+    dst="$2"
     find . -ls
     (cd site && "$hugo")
     (cd site/public && tar -cvf "$dst" .)
