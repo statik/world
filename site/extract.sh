@@ -3,9 +3,11 @@
 set -euo pipefail
 set -x
 
-main () {
-    dst="$1"
-    tar -xf site/site.tgz -C "$dst"
+main() {
+    src="$PWD/$1"
+    dst="$2"
+    echo "$@"
+    tar -xf "$src" -C "$dst"
 }
 
 main "$@"

@@ -1,13 +1,17 @@
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
+
 sh_binary(
     name = "extract",
     srcs = ["extract.sh"],
+    args = ["$(location :site.tar)"],
     data = [":site.tar"],
 )
 
 genrule(
     name = "site",
     outs = ["site.tar"],
-    cmd = "$(location :build) $(location //cmd/hugo) $@",
+    srcs = [":input.tar"],
+    cmd = "$(location :build) $(location :input.tar) $(location //cmd/hugo) $@",
     tools = [":build", "//cmd/hugo"],
 )
 
@@ -15,6 +19,12 @@ sh_binary(
     name = "build",
     srcs = ["build.sh"],
     data = ["//cmd/hugo"] + glob(["**/*"]),
+)
+
+pkg_tar(
+    name = "input",
+    srcs = glob(["**/*"]),
+    strip_prefix = ".",
 )
 
 sh_test(

@@ -18,7 +18,7 @@ pkg_tar(
     ],
     deps = [
         ":bin",
-    ]
+    ],
 )
 
 pkg_tar(
@@ -38,5 +38,5 @@ pkg_tar(
     },
     deps = [
         "@com_docker_download_docker//file:docker.tgz",
-    ]
+    ],
 )

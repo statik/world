@@ -2,11 +2,13 @@
 
 set -euo pipefail
 
-main () {
-    echo "$@"
-    hugo="$1"
-    dst="$2"
-    find . -ls
+main() {
+    input="$PWD/$1"
+    hugo="$PWD/$2"
+    dst="$PWD/$3"
+
+    mkdir -p site
+    tar -xf "$input" -C site
     (cd site && "$hugo")
     (cd site/public && tar -cvf "$dst" .)
 }
