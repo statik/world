@@ -6,10 +6,10 @@ sh_binary(
     data = [":site"],
 )
 
-pkg_tar(
-    name = "site",
-    srcs = [
-    ]
+sh_binary(
+    name = "build"",
+    srcs = ["build.sh"],
+    data = ["//cmd/hugo"] + glob(["**/*"]),
 )
 
 sh_test(
