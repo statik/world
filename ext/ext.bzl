@@ -1,5 +1,5 @@
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
-load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 load("//ext:url.bzl", "url_file", "url_repository")
 
 def dependencies():
@@ -38,6 +38,13 @@ def ext():
         executable = True,
     )
 
+    url_file(
+        name = "com_docker_download_docker",
+        urls = ["https://download.docker.com/linux/static/stable/x86_64/docker-18.09.5.tgz"],
+        sha256 = "99ca9395e9c7ffbf75537de71aa828761f492491d02bc6e29db2920fa582c6c5",
+        output = "docker.tgz",
+    )
+
     url_repository(
         name = "com_github_gohugoio_hugo_hugo",
         urls = ["https://github.com/gohugoio/hugo/releases/download/v0.55.1/hugo_0.55.1_Linux-64bit.tar.gz"],
@@ -45,4 +52,12 @@ def ext():
         overlay = {
             "@com_github_whilp_world//ext:export_all.bzl": "BUILD.bazel",
         },
+    )
+
+    go_repository(
+        name = "com_github_google_go_containerregistry",
+        sha256 = "a68165e7a3137a3cfd4d77d6405ad84a050afce86fcd042fc660802553ee725d",
+        strip_prefix = "go-containerregistry-b6d875c30fe7d51e952909e585882149f6fedf74",
+        urls = ["https://github.com/google/go-containerregistry/archive/b6d875c30fe7d51e952909e585882149f6fedf74.tar.gz"],
+        importpath = "github.com/google/go-containerregistry",
     )
