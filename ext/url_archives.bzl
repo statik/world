@@ -5,7 +5,7 @@ def url_archives():
             sha256 = "3ac63e37477f16cb8adbef21794f7689f4a3a15887c067a93026113119cf1406",
             overlay = {
                 "@com_github_whilp_world//ext:export_all.bzl": "BUILD.bazel",
-            }
+            },
         ),
     )
 

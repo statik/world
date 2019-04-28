@@ -8,7 +8,6 @@ def github_files():
             sha256 = "7750fe5bfb1247e8a858f3c87f63a5fb554ee43cb10efc1ce46c2387f1720064",
             executable = True,
         ),
-
         com_github_bazelbuild_buildtools_buildifier = github_file(
             owner = "bazelbuild",
             repo = "buildtools",
@@ -17,7 +16,6 @@ def github_files():
             sha256 = "25159de982ec8896fc8213499df0a7003dfb4a03dd861f90fa5679d16faf0f99",
             executable = True,
         ),
-
         com_github_mvdan_sh_shfmt = github_file(
             owner = "mvdan",
             repo = "sh",
@@ -26,7 +24,6 @@ def github_files():
             sha256 = "2fbf21300150a14cf908c2e3cfd85a54ba8fcc1eba4349a9aad67aaa07d73e86",
             executable = True,
         ),
-
         com_github_bazelbuild_bazel_bazel = github_file(
             owner = "bazelbuild",
             repo = "bazel",
@@ -35,8 +32,6 @@ def github_files():
             sha256 = "e18e2877e18a447eb5d94f5efbec375366d82af6443c6a83a93c62657a7b1c32",
             executable = True,
         ),
-
-
     )
 
 def github_file(**attrs):
