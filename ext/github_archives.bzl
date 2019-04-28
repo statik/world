@@ -3,8 +3,8 @@ def github_archives():
         io_bazel_rules_go = github_archive(
             owner = "bazelbuild",
             repo = "rules_go",
-            ref = "3ac08dddedec1b1b7f72bae49e24eda6a1f703bf",
-            sha256 = "c3d7debf55f1fff6e5d26715546fab9803fa799d97ef25fc71ed88615d3c662e",
+            ref = "ef7cca8857f2f3a905b86c264737d0043c6a766e",
+            sha256 = "1a400dc2f69971e3ebce29f7950dc38f8bb7e41c727258b6d2fb70060a4ce429",
         ),
         bazel_gazelle = github_archive(
             owner = "bazelbuild",
