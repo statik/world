@@ -9,8 +9,8 @@ def github_archives():
         bazel_gazelle = github_archive(
             owner = "bazelbuild",
             repo = "bazel-gazelle",
-            ref = "f9428739d9a72ab9c9255ada38403856d4521ab2",
-            sha256 = "e595d370bf1c1fc8dac982fe4c235a7b0bd0859547b71150090637924bb5019c",
+            ref = "99f7bcae18d0c84524eca529384723979ce473bc",
+            sha256 = "6d62c377558bbea9228b9ea945ddafb1cdc7e3844bb66240c8b955ef975eae90",
         ),
         io_bazel_rules_docker = github_archive(
             owner = "bazelbuild",
