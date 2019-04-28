@@ -12,7 +12,10 @@ genrule(
     outs = ["site.tar"],
     srcs = [":input.tar"],
     cmd = "$(location :build) $(location :input.tar) $(location //cmd/hugo) $@",
-    tools = [":build", "//cmd/hugo"],
+    tools = [
+        ":build",
+        "//cmd/hugo",
+    ],
 )
 
 sh_binary(

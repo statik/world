@@ -3,6 +3,13 @@ load("//ext:github_archives.bzl", "expanded_github_archives")
 load("//ext:url_files.bzl", "expanded_url_files")
 load("//ext:url_archives.bzl", "expanded_url_archives")
 
+def ext_dependencies():
+    for name, kwargs in archives().items():
+        url_repository(**kwargs)
+
+    for name, kwargs in files().items():
+        url_file(**kwargs)
+
 def files():
     _files = {}
     _files.update(expanded_github_files())
@@ -14,13 +21,6 @@ def archives():
     _archives.update(expanded_github_archives())
     _archives.update(expanded_url_archives())
     return _archives
-
-def ext_dependencies():
-    for name, kwargs in archives().items():
-        url_repository(**kwargs)
-
-    for name, kwargs in files().items():
-        url_file(**kwargs)
 
 def _url_file(ctx):
     ctx.download(
@@ -34,12 +34,12 @@ def _url_file(ctx):
     for src, dst in ctx.attr.overlay.items():
         ctx.symlink(src, dst)
         overlay_files.append(dst)
-    
+
     ctx.file("file/BUILD.bazel", """exports_files(glob(["*"]))""")
-    
+
 url_file = repository_rule(
     attrs = dict(
-        output = attr.string(default="file"),
+        output = attr.string(default = "file"),
         overlay = attr.label_keyed_string_dict(),
         sha256 = attr.string(),
         urls = attr.string_list(),

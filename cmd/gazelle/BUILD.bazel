@@ -3,5 +3,5 @@ load("@bazel_gazelle//:def.bzl", "gazelle")
 # gazelle:prefix github.com/whilp/world
 gazelle(
     name = "gazelle",
-    visibility=["//visibility:public"],
+    visibility = ["//visibility:public"],
 )
