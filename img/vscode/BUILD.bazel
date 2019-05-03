@@ -18,12 +18,32 @@ pkg_tar(
     ],
     deps = [
         ":bin",
+        "//home",
     ],
 )
 
 pkg_tar(
-    name = "bin",
+    name = "home",
+    srcs = [
+        ".gitconfig",
+    ],
+    symlinks = {
+        "./project/.cache": "./.cache",
+    },
+)
+
+pkg_tar(
+    name = "usr_local",
+    package_dir = "/usr/local",
+    deps = [
+        "@com_docker_download_docker//file:docker.tgz",
+    ],
+)
+
+pkg_tar(
+    name = "usr_local_bin",
     mode = "0755",
+    package_dir = "/usr/local/bin",
     files = {
         "//cmd/buildifier": "./bin/buildifier",
         "//cmd/shfmt": "./bin/shfmt",
@@ -36,7 +56,4 @@ pkg_tar(
         "./bin/docker": "../docker/docker",
         "./bin/python": "/usr/bin/python3",
     },
-    deps = [
-        "@com_docker_download_docker//file:docker.tgz",
-    ],
 )

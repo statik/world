@@ -38,6 +38,7 @@ def ext():
         executable = True,
     )
 
+    # bumped https://download.docker.com/linux/static/stable/x86_64/{{file}}
     url_file(
         name = "com_docker_download_docker",
         urls = ["https://download.docker.com/linux/static/stable/x86_64/docker-18.09.5.tgz"],
@@ -45,6 +46,15 @@ def ext():
         output = "docker.tgz",
     )
 
+    # bumped https://dl.google.com/go/go{{version}}.linux-amd64.tar.gz
+    url_file(
+        name = "org_golang_go",
+        urls = ["https://dl.google.com/go/go1.12.4.linux-amd64.tar.gz"],
+        sha256 = "d7d1f1f88ddfe55840712dc1747f37a790cbcaa448f6c9cf51bbe10aa65442f5",
+        output = "golang.tgz",
+    )
+
+    # bumped https://github.com/gohugoio/hugo/releases/download/v{{release}}/hugo_{{release}}_Linux-64bit.tar.gz
     url_repository(
         name = "com_github_gohugoio_hugo_hugo",
         urls = ["https://github.com/gohugoio/hugo/releases/download/v0.55.1/hugo_0.55.1_Linux-64bit.tar.gz"],
@@ -54,6 +64,7 @@ def ext():
         },
     )
 
+    # bumped https://github.com/google/go-containerregistry/archive/{{ref}}.tar.gz
     go_repository(
         name = "com_github_google_go_containerregistry",
         sha256 = "a68165e7a3137a3cfd4d77d6405ad84a050afce86fcd042fc660802553ee725d",
