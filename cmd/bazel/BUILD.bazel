@@ -6,3 +6,7 @@ genrule(
     executable = True,
     visibility = ["//visibility:public"],
 )
+
+exports_files([
+    "build.sh",
+])

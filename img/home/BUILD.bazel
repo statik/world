@@ -49,10 +49,11 @@ pkg_tar(
         "//cmd/buildozer": "./buildozer",
         "//cmd/bazel": "./bazel",
         "//cmd/hugo": "./hugo",
+        "//cmd/bazel:build.sh": "./build",
         "@bazel_gazelle//cmd/gazelle": "./gazelle",
     },
     symlinks = {
-        "./docker": "../docker/docker",
-        "./python": "/usr/bin/python3",
+        "./usr/local/bin/docker": "../docker/docker",
+        "./usr/local/bin/python": "/usr/bin/python3",
     },
 )

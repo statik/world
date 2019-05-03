@@ -1,13 +1,18 @@
 {
     "name": "whilp_world",
     "dockerFile": "./img/home/Dockerfile",
+    "context": ".",
     "extensions": [
+        "bazelbuild.vscode-bazel",
+        "eamodio.gitlens",
+        "foxundermoon.shell-format",
+        "ms-python.python",
         "ms-vscode.go"
     ],
     "runArgs": [
         "--volume",
         "/var/run/docker.sock:/var/run/docker.sock",
         "--volume",
-        "home:/root"
+        "cache:/cache"
     ]
 }
