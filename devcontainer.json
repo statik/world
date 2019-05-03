@@ -1,0 +1,13 @@
+{
+    "name": "whilp_world",
+    "dockerFile": "./img/home/Dockerfile",
+    "extensions": [
+        "ms-vscode.go"
+    ],
+    "runArgs": [
+        "--volume",
+        "/var/run/docker.sock:/var/run/docker.sock",
+        "--volume",
+        "home:/root"
+    ]
+}

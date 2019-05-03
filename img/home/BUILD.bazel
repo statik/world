@@ -7,7 +7,7 @@ sh_binary(
 )
 
 sh_binary(
-    name = "vscode",
+    name = "home",
     srcs = ["run.sh"],
 )
 
@@ -17,23 +17,22 @@ pkg_tar(
         "Dockerfile",
     ],
     deps = [
-        ":bin",
-        "//home",
+        ":slash_usr_local",
+        ":slash_usr_local_bin",
+        ":slash_root",
     ],
 )
 
 pkg_tar(
-    name = "home",
+    name = "slash_root",
+    package_dir = "/root",
     srcs = [
         ".gitconfig",
     ],
-    symlinks = {
-        "./project/.cache": "./.cache",
-    },
 )
 
 pkg_tar(
-    name = "usr_local",
+    name = "slash_usr_local",
     package_dir = "/usr/local",
     deps = [
         "@com_docker_download_docker//file:docker.tgz",
@@ -41,19 +40,19 @@ pkg_tar(
 )
 
 pkg_tar(
-    name = "usr_local_bin",
+    name = "slash_usr_local_bin",
     mode = "0755",
     package_dir = "/usr/local/bin",
     files = {
-        "//cmd/buildifier": "./bin/buildifier",
-        "//cmd/shfmt": "./bin/shfmt",
-        "//cmd/buildozer": "./bin/buildozer",
-        "//cmd/bazel": "./bin/bazel",
-        "//cmd/hugo": "./bin/hugo",
-        "@bazel_gazelle//cmd/gazelle": "./bin/gazelle",
+        "//cmd/buildifier": "./buildifier",
+        "//cmd/shfmt": "./shfmt",
+        "//cmd/buildozer": "./buildozer",
+        "//cmd/bazel": "./bazel",
+        "//cmd/hugo": "./hugo",
+        "@bazel_gazelle//cmd/gazelle": "./gazelle",
     },
     symlinks = {
-        "./bin/docker": "../docker/docker",
-        "./bin/python": "/usr/bin/python3",
+        "./docker": "../docker/docker",
+        "./python": "/usr/bin/python3",
     },
 )
