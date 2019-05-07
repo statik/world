@@ -1,2 +1,22 @@
 {
+    "workbench.colorTheme": "Quiet Light",
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "editor.minimap.enabled": false,
+    "python.jediEnabled": false,
+    "window.zoomLevel": 1,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "bazel.buildifierFixOnFormat": true,
+    "files.exclude": {
+        "**/.cache": true,
+        "**/.vscode": true,
+        "**/bazel-*": true
+    },
+    "git.confirmSync": false,
+    "editor.fontSize": 12,
+    "git.autoRepositoryDetection": false,
+    "python.pythonPath": "/usr/local/miniconda3/envs/even-server/bin/python"
 }
