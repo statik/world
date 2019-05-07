@@ -1,2 +1,2 @@
 test --test_output=errors
-build --repository_cache=/cache/bazel
+startup --output_user_root=/cache/bazel
