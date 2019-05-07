@@ -17,6 +17,5 @@
     },
     "git.confirmSync": false,
     "editor.fontSize": 12,
-    "git.autoRepositoryDetection": false,
-    "python.pythonPath": "/usr/local/miniconda3/envs/even-server/bin/python"
+    "git.autoRepositoryDetection": false
 }
