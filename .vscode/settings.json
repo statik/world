@@ -4,7 +4,7 @@
     "workbench.activityBar.visible": true,
     "editor.minimap.enabled": false,
     "python.jediEnabled": false,
-    "window.zoomLevel": 2,
+    "window.zoomLevel": 1,
     "python.formatting.provider": "black",
     "editor.formatOnSave": true,
     "git.enableSmartCommit": true,

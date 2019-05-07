@@ -6,8 +6,10 @@
         "bazelbuild.vscode-bazel",
         "eamodio.gitlens",
         "foxundermoon.shell-format",
+        "github.vscode-pull-request-github",
         "ms-python.python",
-        "ms-vscode.go"
+        "ms-vscode.go",
+        "redhat.vscode-yaml"
     ],
     "runArgs": [
         "--volume",
