@@ -11,6 +11,10 @@
         "ms-vscode.go",
         "redhat.vscode-yaml"
     ],
+    "appPort": [
+        "8080",
+        "1313",
+    ],
     "runArgs": [
         "--volume",
         "/var/run/docker.sock:/var/run/docker.sock",
