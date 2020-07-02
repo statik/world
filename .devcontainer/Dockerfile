@@ -19,14 +19,23 @@ RUN apt-get update \
     #
     # Verifty git, process tools, lsb-release (common in install instructions for CLIs) installed
     && apt-get -y install \
+    binutils \
+    cpp \
+    g++ \
+    gcc \
     git \
     iproute2 \
     lsb-release \
+    make \
     procps \
     python3.7 \
+    python3.7-distutil \
     python3.7-venv \
     sudo \
     unzip \
+    # 
+    # Python
+    ln -s python3 /usr/bin/python \
     #
     # Setup user
     && groupadd --gid $USER_GID $USERNAME \
