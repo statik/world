@@ -1,4 +1,5 @@
 {
   "name": "whilp.world",
-  "dockerFile": "Dockerfile"
+  "dockerFile": "Dockerfile",
+  "remoteUser": "vscode"
 }
