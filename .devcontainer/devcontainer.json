@@ -1,4 +1,4 @@
 {
   "name": "whilp.world",
-  "image": "ubuntu:18.04"
+  "dockerFile": "Dockerfile"
 }
