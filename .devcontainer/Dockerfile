@@ -10,6 +10,8 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
+ARG DOCKER_SCRIPT_SOURCE="https://raw.githubusercontent.com/microsoft/vscode-dev-containers/ca56f6e76b9d431cf1c97084c2437bf9fbf4fa5e/script-library/docker-debian.sh"
+
 # Configure apt and install packages
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
@@ -32,7 +34,18 @@ RUN apt-get update \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
     && chmod 0440 /etc/sudoers.d/$USERNAME \
     #
+    # Use Docker script from script library to set things up
+    && curl -sSL $DOCKER_SCRIPT_SOURCE -o /tmp/docker-setup.sh \
+    && /bin/bash /tmp/docker-setup.sh "${ENABLE_NONROOT_DOCKER}" "${SOURCE_SOCKET}" "${TARGET_SOCKET}" "${USERNAME}" \
+    && rm /tmp/docker-setup.sh \
+    #
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+
+# Setting the ENTRYPOINT to docker-init.sh will configure non-root access to 
+# the Docker socket if "overrideCommand": false is set in devcontainer.json. 
+# The script will also execute CMD if you need to alter startup behaviors.
+ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
+CMD [ "sleep", "infinity" ]
