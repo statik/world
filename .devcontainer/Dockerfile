@@ -38,7 +38,7 @@ RUN apt-get update \
     unzip \
     # 
     # Python
-    ln -s python3 /usr/bin/python \
+    && ln -s python3 /usr/bin/python \
     #
     # Setup user
     && groupadd --gid $USER_GID $USERNAME \
