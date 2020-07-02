@@ -22,6 +22,7 @@ RUN apt-get update \
     #
     # Verifty git, process tools, lsb-release (common in install instructions for CLIs) installed
     && apt-get -y install \
+    curl \
     binutils \
     cpp \
     g++ \
