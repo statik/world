@@ -2,6 +2,9 @@ FROM ubuntu:18.04@sha256:c32bd2e76e7688eeb1bb39754fff7cdfc571626fc1abfded4f82a90
 
 # https://github.com/microsoft/vscode-dev-containers/blob/a0e66d00f1108963186f06bce5fbf805e7201503/containers/bazel/.devcontainer/Dockerfile#L1
 
+# Default to bash shell (other shells available at /usr/bin/fish and /usr/bin/zsh)
+ENV SHELL=/bin/bash
+
 # This Dockerfile adds a non-root user with sudo access. Use the "remoteUser"
 # property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
 # will be updated to match your local UID/GID (when using the dockerFile property).
