@@ -58,3 +58,4 @@ RUN apt-get update \
 # The script will also execute CMD if you need to alter startup behaviors.
 ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
 CMD [ "sleep", "infinity" ]
+USER $USERNAME
