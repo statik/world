@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "2.0.0",
+  "commandTests": [
+    {
+      "name": "python is python3.7",
+      "command": "python",
+      "args": ["--version"],
+      "expectedOutput": ["Python 3.7"]
+    },
+    {
+      "name": "python3 is python3.7",
+      "command": "python3",
+      "args": ["--version"],
+      "expectedOutput": ["Python 3.7"]
+    },
+    {
+      "name": "python3.7 is python3.7",
+      "command": "python3.7",
+      "args": ["--version"],
+      "expectedOutput": ["Python 3.7"]
+    },
+    {
+      "name": "docker",
+      "command": "docker",
+      "args": ["--version"],
+      "expectedOutput": ["Docker version"]
+    },
+    {
+      "name": "dockerd",
+      "command": "dockerd",
+      "args": ["--version"],
+      "expectedOutput": ["Docker version"]
+    },
+    {
+      "name": "rootlesskit",
+      "command": "rootlesskit",
+      "args": ["--version"],
+      "expectedOutput": ["rootlesskit version"]
+    },
+    {
+      "name": "bazel",
+      "command": "bazel",
+      "args": ["--version"],
+      "expectedOutput": ["bazel"]
+    },
+    {
+      "name": "buildifier",
+      "command": "buildifier",
+      "args": ["--version"],
+      "expectedOutput": ["buildifier version"]
+    },
+    {
+      "name": "buildozer",
+      "command": "buildozer",
+      "args": ["--version"],
+      "expectedOutput": ["buildozer version"]
+    },
+    {
+      "name": "shellcheck",
+      "command": "shellcheck",
+      "args": ["--version"],
+      "expectedOutput": ["ShellCheck"]
+    },
+    {
+      "name": "shfmt",
+      "command": "shfmt",
+      "args": ["--version"],
+      "expectedOutput": ["v"]
+    },
+    {
+      "name": "ibazel",
+      "command": "ibazel",
+      "args": ["--version"],
+      "exitCode": 2,
+      "expectedError": ["iBazel"]
+    }
+  ]
+}
