@@ -1,6 +1,9 @@
 name: update
 
 on:
+  push:
+    paths:
+      - renovate.js
   schedule:
     - cron: "19 3 * * *"
 

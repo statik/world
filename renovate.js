@@ -22,9 +22,9 @@ module.exports = {
   },
   regexManagers: [
     {
-      fileMatch: "^WORKSPACE$",
+      fileMatch: "versions.bzl",
       matchStrings: [
-        '# renovate (?<datasource>.*)\n.*"https://github.com/(?<depName>.*?)/releases/download/(?<currentValue>.*?)/.*"',
+        'datasource = "(?<datasource>.*?)".*name = "(?<depName>.*?)".*version = "(?<currentValue>.*?)"',
       ],
     },
   ],
