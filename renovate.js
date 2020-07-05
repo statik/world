@@ -3,7 +3,6 @@ module.exports = {
   extends: ["config:base"],
   onboarding: false,
   requireConfig: false,
-  prCreation: "not-pending",
   gitAuthor: "Renovate Bot <bot@renovateapp.com>",
   logLevel: "debug",
   pinDigests: true,
@@ -33,6 +32,11 @@ module.exports = {
     {
       packageNames: ["ubuntu"],
       versioning: "regex:^(?<compatibility>[a-z]+?)-(?<minor>\\d+)?$",
+    },
+    {
+      depTypeList: ["container_pull"],
+      packagePatterns: ["ubuntu"],
+      allowedVersions: "<=18.04",
     },
     {
       updateTypes: ["digest"],
