@@ -23,9 +23,17 @@ module.exports = {
   regexManagers: [
     {
       fileMatch: "versions.bzl",
+      labels: ["dependencies", "bazel"],
       matchStrings: [
-        'datasource = "(?<datasource>.*?)".*name = "(?<depName>.*?)".*version = "(?<currentValue>.*?)"',
+        'datasource = "(?<datasource>.*?)",\n.*name = "(?<depName>.*?)",\n.*version = "(?<currentValue>.*?)"',
       ],
+    },
+    {
+      fileMatch: ".bazelversion",
+      labels: ["dependencies", "bazel"],
+      matchStrings: ["^(?<currentValue>[0-9.]+)\\s"],
+      datasourceTemplate: "github-releases",
+      depNameTemplate: "bazelbuild/bazel",
     },
   ],
   packageRules: [
@@ -36,8 +44,16 @@ module.exports = {
       versioning: "regex:^(?<compatibility>[a-z]+?)-(?<minor>\\d+)?$",
     },
     {
-      updateTypes: ["digest"],
-      schedule: ["before 3am on monday"],
+      // Keep in sync with rules_nodejs
+      // https://github.com/bazelbuild/rules_nodejs/blob/d660ca109fcf86fe0dbfb9908faaefb0e30c25a0/internal/node/node_repositories.bzl#L108-L112
+      packagePatterns: ["nodejs/node"],
+      allowedVersions: "<=12.13.0",
+    },
+    {
+      // Keep in sync with rules_nodejs
+      // https://github.com/bazelbuild/rules_nodejs/blob/d660ca109fcf86fe0dbfb9908faaefb0e30c25a0/internal/node/node_repositories.bzl#L204
+      packagePatterns: ["yarnpkg/yarn"],
+      allowedVersions: "<=1.22.4",
     },
   ],
 };
