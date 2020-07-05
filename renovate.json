@@ -7,7 +7,14 @@
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "logLevel": "debug",
   "pinDigests": true,
-  "enabledManagers": ["bazel", "regex", "npm"],
+  "enabledManagers": ["github-actions", "bazel", "regex", "npm"],
+  "platform": "github",
+  "repositories": ["whilp/world"],
+  "github-actions": {
+    "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
+    "pinDigests": true,
+    "labels": ["dependencies", "github"]
+  },
   "bazel": {
     "labels": ["dependencies", "bazel"]
   },
