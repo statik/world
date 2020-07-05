@@ -37,6 +37,7 @@ module.exports = {
       depTypeList: ["container_pull"],
       packagePatterns: ["ubuntu"],
       allowedVersions: "<=18.04",
+      versioning: "regex:^(?<compatibility>[a-z]+?)-(?<minor>\\d+)?$",
     },
     {
       updateTypes: ["digest"],
