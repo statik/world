@@ -1,0 +1,17 @@
+name: update
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  renovate:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - uses: renovatebot/github-action@v1.0.0
+        with:
+          token: ${{ secrets.RENOVATE_TOKEN }}
