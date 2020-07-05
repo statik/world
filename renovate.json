@@ -4,6 +4,8 @@
   "onboarding": false,
   "requireConfig": false,
   "prCreation": "not-pending",
+  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
+  "logLevel": "debug",
   "pinDigests": true,
   "enabledManagers": ["bazel", "regex", "npm"],
   "bazel": {
