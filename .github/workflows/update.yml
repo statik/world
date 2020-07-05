@@ -17,3 +17,6 @@ jobs:
         env:
           RENOVATE_REPOSITORIES: whilp/world
           RENOVATE_TOKEN: ${{ secrets.RENOVATE_TOKEN }}
+          RENOVATE_ONBOARDING: false
+          RENOVATE_CONFIG_FILE: renovate.js
+          RENOVATE_LOGLEVEL: debug
