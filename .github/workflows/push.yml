@@ -17,7 +17,7 @@ jobs:
         env:
           DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
-      - name: bazel run image/devcontainer:next
+      - name: bazel run image/devcontainer:latest
         run: ./tools/bazel run --config=ci image/devcontainer:latest
 
   linter:
