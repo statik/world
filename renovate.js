@@ -30,10 +30,6 @@ module.exports = {
   ],
   packageRules: [
     {
-      packageNames: ["ubuntu"],
-      versioning: "regex:^(?<compatibility>[a-z]+?)-(?<minor>\\d+)?$",
-    },
-    {
       depTypeList: ["container_pull"],
       packagePatterns: ["ubuntu"],
       allowedVersions: "<=18.04",
