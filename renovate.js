@@ -1,4 +1,5 @@
 module.exports = {
+  // bump
   // $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["config:base"],
   onboarding: false,
