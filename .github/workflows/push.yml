@@ -6,30 +6,26 @@ on:
       - master
 
 jobs:
-  devcontainer:
+  push:
+    strategy:
+      matrix:
+        image:
+          - devcontainer
+          - shfmt
+          - black
+          - buildifier
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.1
         with:
           fetch-depth: 2
+      - uses: actions/setup-python@v2.0.1
+        with:
+          python-version: "3.7"
       - name: docker login
         run: echo "$DOCKER_TOKEN" | docker login --password-stdin --username "$DOCKER_USER"
         env:
           DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
-      - name: bazel run image/devcontainer:latest
-        run: ./tools/bazel run --config=ci image/devcontainer:latest
-
-  linter:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
-      - name: docker login
-        run: echo "$DOCKER_TOKEN" | docker login --password-stdin --username "$DOCKER_USER"
-        env:
-          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-      - name: bazel run image/linter:latest
-        run: ./tools/bazel run --config=ci image/linter:latest
+      - name: bazel run image/${{ matrix.image }}:push
+        run: ./tools/bazel run --config=ci image/${{ matrix.image }}:push

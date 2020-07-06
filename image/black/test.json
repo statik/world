@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "2.0.0",
+  "commandTests": [
+    {
+      "name": "black",
+      "command": "/usr/bin/python",
+      "args": ["/app/image/black/black.binary", "--version"],
+      "expectedOutput": ["black.py"]
+    }
+  ]
+}

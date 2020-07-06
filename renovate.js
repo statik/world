@@ -22,6 +22,29 @@ module.exports = {
   },
   regexManagers: [
     {
+      fileMatch: [".devcontainer.json"],
+      labels: ["dependencies", "docker"],
+      matchStrings: [
+        "(?<depName>.*?):(?<currentValue>.*?)@(?<currentDigest>sha256:[a-f0-9]+)",
+      ],
+      datasourceTemplate: "docker",
+    },
+    {
+      fileMatch: ["^\\.github/workflows/[^/]+\\.ya?ml$"],
+      labels: ["dependencies", "docker"],
+      matchStrings: [
+        "docker://(?<depName>.*?):(?<currentValue>.*?)@(?<currentDigest>sha256:[a-f0-9]+)",
+      ],
+      datasourceTemplate: "docker",
+    },
+    {
+      // https://github.com/renovatebot/renovate/issues/5733
+      fileMatch: ["^\\.github/workflows/[^/]+\\.ya?ml$"],
+      labels: ["dependencies", "github"],
+      matchStrings: ["uses: (?<depName>.*?)@(?<currentValue>.*?)\\s"],
+      datasourceTemplate: "github-tags",
+    },
+    {
       fileMatch: "versions.bzl",
       labels: ["dependencies", "bazel"],
       matchStrings: [
