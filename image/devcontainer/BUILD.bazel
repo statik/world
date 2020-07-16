@@ -134,6 +134,7 @@ container_layer(
         "@bazel//file",
         "@buildifier//file",
         "@buildozer//file",
+        "@golangci-lint",
         "@ibazel//file",
         "@shellcheck",
         "@shfmt//file",
