@@ -137,7 +137,7 @@ load(
     _py_image_repos = "repositories",
 )
 
-# Make sure we get a base image with python3.7.
+# Make sure we get a base image with python3.
 container_pull(
     name = "py3_image_base",
     digest = "sha256:f7d590fed7404ad6fcf6199012de4ea1dcefc93393c85d64783f8737009715b4",

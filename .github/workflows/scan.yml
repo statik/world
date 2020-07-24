@@ -34,7 +34,7 @@ jobs:
           fetch-depth: 2
       - uses: actions/setup-python@v2.1.1
         with:
-          python-version: "3.7"
+          python-version: "3.8"
       - name: bazel run ${{ matrix.image }}:image
         run: ./tools/bazel run --config=ci ${{ matrix.image }}:image
       - uses: anchore/scan-action@v1
