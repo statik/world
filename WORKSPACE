@@ -91,10 +91,6 @@ yarn_install(
     yarn_lock = "//:yarn.lock",
 )
 
-#load("@npm//@bazel/typescript:index.bzl", "ts_setup_workspace")
-
-#ts_setup_workspace()
-
 http_archive(
     name = "io_bazel_rules_docker",
     sha256 = "4521794f0fba2e20f3bf15846ab5e01d5332e587e9ce81629c7f96c793bb7036",
@@ -118,16 +114,24 @@ load("@io_bazel_rules_docker//repositories:pip_repositories.bzl", "pip_deps")
 pip_deps()
 
 load(
+    "@io_bazel_rules_docker//container:container.bzl",
+    "container_pull",
+)
+load(
     "@io_bazel_rules_docker//cc:image.bzl",
     _cc_image_repos = "repositories",
 )
 
+container_pull(
+    name = "cc_image_base",
+    digest = "sha256:482e7efb3245ded60e9ced05909551fc14d39b47e2cc643830f4466010c25372",
+    registry = "gcr.io",
+    repository = "distroless/cc",
+    tag = "latest",
+)
+
 _cc_image_repos()
 
-load(
-    "@io_bazel_rules_docker//container:container.bzl",
-    "container_pull",
-)
 load(
     "@io_bazel_rules_docker//python3:image.bzl",
     _py_image_repos = "repositories",
@@ -147,6 +151,14 @@ _py_image_repos()
 load(
     "@io_bazel_rules_docker//nodejs:image.bzl",
     _nodejs_image_repos = "repositories",
+)
+
+container_pull(
+    name = "nodejs_image_base",
+    digest = "sha256:fd26dfa474b76ef931e439537daba90bbd90d6c5bbdd0252616e6d87251cd9cd",
+    registry = "gcr.io",
+    repository = "google-appengine/debian9",
+    tag = "latest",
 )
 
 _nodejs_image_repos()
