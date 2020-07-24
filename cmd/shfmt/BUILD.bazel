@@ -25,7 +25,7 @@ container_image(
     entrypoint = ["/shfmt"],
     files = [FILE],
     labels = {
-        "org.opencontainers.image.authors": "@whilp",
+        "org.opencontainers.image.authors": "https://github.com/whilp",
         "org.opencontainers.image.url": "https://github.com/whilp/world",
         "org.opencontainers.image.source": "https://github.com/whilp/world",
         "org.opencontainers.image.documentation": "https://github.com/whilp/world/#readme",
