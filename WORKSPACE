@@ -164,11 +164,11 @@ container_pull(
 _nodejs_image_repos()
 
 container_pull(
-    name = "ubuntu18.04",
-    digest = "sha256:767eea1efb29ab7e215e1d97c8d758df5d587ca86e769a2dfb254c6b022895c3",
+    name = "debian",
+    digest = "sha256:828673a3ab4883b426b5650df8e7da264b1c78e21559aab780e0dca928c8871a",
     registry = "docker.io",
-    repository = "library/ubuntu",
-    tag = "18.04",
+    repository = "library/debian",
+    tag = "testing-slim",
 )
 
 http_archive(
