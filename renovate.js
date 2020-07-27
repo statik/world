@@ -10,7 +10,13 @@ module.exports = {
   logLevel: "debug",
   pinDigests: true,
   prHourlyLimit: 15,
-  enabledManagers: ["github-actions", "bazel", "regex", "npm", "python"],
+  enabledManagers: [
+    "github-actions",
+    "bazel",
+    "regex",
+    "npm",
+    "pip_requirements",
+  ],
   platform: "github",
   reviewersFromCodeOwners: true,
   repositories: ["whilp/world"],
@@ -24,6 +30,10 @@ module.exports = {
   },
   npm: {
     labels: ["dependencies", "javascript"],
+  },
+  pip_requirements: {
+    labels: ["dependencies", "python"],
+    fileMatch: ["requirements.in", "requirements.txt"],
   },
   allowedPostUpgradeCommands: ["^./tools/bazel run"],
   postUpgradeTasks: {
