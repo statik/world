@@ -53,6 +53,8 @@ PACKAGES = [
     "make",
     "nvi",
     "patch",
+    "python3-wheel",
+    "python3.7-dev",
     "python3.7-distutil",
     "python3.7-venv",
     "python3.7",
