@@ -1,0 +1,43 @@
+load("@io_bazel_rules_docker//container:container.bzl", "container_image", "container_layer")
+load("@io_bazel_rules_docker//contrib:test.bzl", "container_test")
+load("//versions:versions.bzl", "versions")
+
+v = versions()
+
+prefix = ("/usr/local/" + v.rust.prefix)
+
+container_layer(
+    name = "layer",
+    directory = "/usr/local",
+    symlinks = {
+        "/usr/local/bin/cargo": prefix + "/cargo/bin/cargo",
+        "/usr/local/bin/cargo-clippy": prefix + "/clippy-preview/bin/cargo-clippy",
+        "/usr/local/bin/clippy-driver": prefix + "/clippy-preview/bin/clippy-driver",
+        "/usr/local/bin/cargo-miri": prefix + "/miri-preview/bin/cargo-miri",
+        "/usr/local/bin/miri": prefix + "/miri-preview/bin/miri",
+        "/usr/local/bin/rls": prefix + "/rls-preview/bin/rls",
+        "/usr/local/bin/rust-gdb": prefix + "/rustc/bin/rust-gdb",
+        "/usr/local/bin/rust-gdbgui": prefix + "/rustc/bin/rust-gdbgui",
+        "/usr/local/bin/rust-lldb": prefix + "/rustc/bin/rust-lldb",
+        "/usr/local/bin/rustc": prefix + "/rustc/bin/rustc",
+        "/usr/local/bin/rustdoc": prefix + "/rustc/bin/rustdoc",
+        "/usr/local/bin/cargo-fmt": prefix + "/rustfmt-preview/bin/cargo-fmt",
+        "/usr/local/bin/rustfmt": prefix + "/rustfmt-preview/bin/rustfmt",
+    },
+    tars = [
+        "@rust_sdk_archive//file",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+container_image(
+    name = "rust",
+    base = "@cc_image_base//image",
+    layers = [":layer"],
+)
+
+container_test(
+    name = "test",
+    configs = ["test.json"],
+    image = ":rust",
+)

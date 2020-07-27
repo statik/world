@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "2.0.0",
+  "commandTests": [
+    {
+      "name": "cargo",
+      "command": "/usr/local/bin/cargo",
+      "args": ["--version"],
+      "expectedOutput": ["cargo"]
+    }
+  ]
+}

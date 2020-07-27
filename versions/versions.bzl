@@ -90,6 +90,15 @@ def versions():
             url = GITHUB_RELEASE_URL,
             asset = "shfmt_{version}_linux_amd64",
         ),
+        rust = version(
+            datasource = "github-releases",
+            name = "rustlang/rust",
+            version = "1.45.0",
+            sha256 = "c5794c1ac081f0028d60317454fe388068ab5af7740a83e393515170a7157dce",
+            url = GITHUB_RELEASE_URL,
+            prefix = "rust-{version}-x86_64-unknown-linux-gnu",
+            asset = "{prefix}.tar.gz",
+        ),
     )
 
 def _json_file_impl(ctx):
@@ -140,10 +149,10 @@ def version(
         prefix = prefix,
     )
     params["stripped_version"] = version.strip("v")
+    if prefix != None:
+        params["prefix"] = prefix.format(**params)
     if asset != None:
         params["asset"] = asset.format(**params)
     if url != None:
         params["url"] = url.format(**params)
-    if prefix != None:
-        params["prefix"] = prefix.format(**params)
     return struct(**params)

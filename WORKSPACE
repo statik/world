@@ -92,6 +92,19 @@ yarn_install(
 )
 
 http_archive(
+    name = "io_bazel_rules_rust",
+    sha256 = "5ed804fcd10a506a5b8e9e59bc6b3b7f43bc30c87ce4670e6f78df43604894fd",
+    strip_prefix = "rules_rust-fdf9655ba95616e0314b4e0ebab40bb0c5fe005c",
+    urls = ["https://github.com/bazelbuild/rules_rust/archive/fdf9655ba95616e0314b4e0ebab40bb0c5fe005c.tar.gz"],
+)
+
+load("@io_bazel_rules_rust//rust:repositories.bzl", "rust_repositories")
+
+rust_repositories()
+
+rust_repositories(version = "1.45.0")
+
+http_archive(
     name = "io_bazel_rules_docker",
     sha256 = "4521794f0fba2e20f3bf15846ab5e01d5332e587e9ce81629c7f96c793bb7036",
     strip_prefix = "rules_docker-0.14.4",
@@ -169,6 +182,14 @@ container_pull(
     registry = "docker.io",
     repository = "library/ubuntu",
     tag = "18.04",
+)
+
+container_pull(
+    name = "debian",
+    digest = "sha256:79326248a982be0b36e8280f906916fceffdd5c17a298b14446e5e72cc822fe7",
+    registry = "docker.io",
+    repository = "library/debian",
+    tag = "10.4-slim",
 )
 
 http_archive(
@@ -260,4 +281,11 @@ http_file(
     downloaded_file_path = "yarn.tar.gz",
     sha256 = "bc5316aa110b2f564a71a3d6e235be55b98714660870c5b6b2d2d3f12587fb58",
     urls = ["https://github.com/yarnpkg/yarn/releases/download/v1.22.4/yarn-v1.22.4.tar.gz"],
+)
+
+http_file(
+    name = "rust_sdk_archive",
+    downloaded_file_path = "rust.tar.gz",
+    sha256 = "c34ed8722759fd60c94dbc9069833da5b3b873dcd19afaa9b34c1ce2c2cfa229",
+    urls = ["https://static.rust-lang.org/dist/rust-1.45.0-x86_64-unknown-linux-gnu.tar.gz"],
 )
