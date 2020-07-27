@@ -1,4 +1,7 @@
+--no-binary :all:
+
 black==19.10b0
-pip-tools==1.8.0
-pip==9.0.3
-setuptools==49.1.0
+pip-tools==5.3.0
+pip==20.1.1
+setuptools==49.2.0
+wheel==0.30.0
