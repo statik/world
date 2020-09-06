@@ -35,7 +35,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: lint
-        uses: docdker://ghcr.io/whilp/shfmt:latest
+        uses: docker://ghcr.io/whilp/shfmt:latest
       - run: git diff --exit-code
 
   prettier:
