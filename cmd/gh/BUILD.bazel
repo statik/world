@@ -2,6 +2,30 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 load("@io_bazel_rules_docker//container:container.bzl", "container_push")
 load("@io_bazel_rules_docker//contrib:test.bzl", "container_test")
 load("@io_bazel_rules_docker//go:image.bzl", "go_image")
+load("//doc:doc.bzl", "package_doc", "target_doc")
+
+package_doc(
+    name = "doc",
+    deps = [
+        ":gh_doc",
+        ":package_doc",
+    ],
+)
+
+target_doc(
+    name = "package_doc",
+    content = """
+    welp
+    """,
+)
+
+target_doc(
+    name = "gh_doc",
+    content = """
+    it's go
+    """,
+    deps = [":gh"],
+)
 
 go_binary(
     name = "gh",
