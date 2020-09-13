@@ -976,6 +976,14 @@ http_archive(
 )
 
 http_archive(
+    name = "age",
+    build_file_content = """exports_files(["age", "age-keygen"])""",
+    strip_prefix = "age/",
+    sha256 = "52572f12c3f54d2ec3f83adb716b160dd35d62fd282c9124dd79b6058b114349",
+    urls = ["https://github.com/FiloSottile/age/releases/download/v1.0.0-beta2/age-v1.0.0-beta2-linux-amd64.tar.gz"],
+)
+
+http_archive(
     name = "smallstep",
     build_file_content = """exports_files(["step"])""",
     strip_prefix = "step_0.15.2/bin",
