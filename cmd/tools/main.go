@@ -1,4 +1,5 @@
 // +build tools
+//nolint
 package main
 
 // https://github.com/golang/go/issues/25922#issuecomment-414677877
