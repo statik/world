@@ -37,31 +37,34 @@ container_image(
 )
 
 PACKAGES = [
+    "apt-utils",
     "binutils",
     "ca-certificates",
     "cpp",
-    "g++",
     "curl",
-    "gcc",
-    "zlib1g",
-    "libkrb5-3",
-    "libicu60",
-    "apt-utils",
     "dialog",
-    "openssl",
+    "file",
+    "g++",
+    "gcc",
     "git",
+    "gpg",
     "iproute2",
     "iptables",
+    "libicu60",
+    "libkrb5-3",
     "make",
     "nvi",
+    "openssl",
     "patch",
     "python3.7-distutil",
     "python3.7-venv",
     "python3.7",
     "sudo",
+    "tzdata",
     "uidmap",
     "unzip",
     "wget",
+    "zlib1g",
 ]
 
 REMOVE_PACKAGES = [
@@ -72,6 +75,7 @@ REMOVE_PACKAGES = [
 container_run_and_commit(
     name = "base",
     commands = [
+        "export DEBIAN_FRONTEND=noninteractive",
         "apt-get update",
         "apt-get remove -y " + " ".join(REMOVE_PACKAGES),
         "apt-get install --no-install-recommends -y " + " ".join(PACKAGES),
