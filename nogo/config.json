@@ -4,7 +4,22 @@
       "/external/": "ignore third party code"
     }
   },
+  "nilness": {
+    "exclude_files": {
+      "/external/": "ignore third party code"
+    }
+  },
+  "stringintconv": {
+    "exclude_files": {
+      "/external/": "ignore third party code"
+    }
+  },
   "shadow": {
+    "exclude_files": {
+      "/external/": "ignore third party code"
+    }
+  },
+  "unsafeptr": {
     "exclude_files": {
       "/external/": "ignore third party code"
     }
