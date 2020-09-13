@@ -65,6 +65,8 @@ jobs:
         with:
           fetch-depth: 2
       - uses: actions/setup-go@v2.1.2
+      - name: clean up
+        run: rm -rf cmd/tools
       - name: lint
         uses: docker://ghcr.io/whilp/golangci-lint:latest@sha256:bdde489a6b54a5951ddc2311f5ba34eba71f1ef439e77d92067f44ac4a36a2ed
       - run: git diff --exit-code
