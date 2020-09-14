@@ -6,71 +6,26 @@ on:
       - main
 
 jobs:
-  # Can't use a matrix here because `uses` doesn't accept expressions.
-  # https://github.community/t/expressions-in-docker-uri/16271
-  buildifier:
+  lint:
     runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2.3.2
-      - run: .github/matchers.sh
-      - name: lint
-        uses: docker://ghcr.io/whilp/buildifier:latest@sha256:c9801dbfb119bbbbfedaa43314b9d4cd27dfde7b0c9a5b93fe958e9d8e46d88c
-      - run: git diff --exit-code
-
-  black:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2.3.2
-      - run: .github/matchers.sh
-      - name: lint
-        uses: docker://ghcr.io/whilp/black:latest@sha256:aba7829a5d074b12a697ee21811e7c9b575795d5778d47b069e2b48d76e7b276
-      - run: git diff --exit-code
-
-  bandit:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2.3.2
-      - run: .github/matchers.sh
-      - name: lint
-        uses: docker://ghcr.io/whilp/bandit:latest@sha256:d84b88b9734eb3248c5e8b7f2b03f7ef28283e174291ad68fa864a52419f072c
-      - run: git diff --exit-code
-
-  shfmt:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2.3.2
-      - run: .github/matchers.sh
-      - name: lint
-        uses: docker://ghcr.io/whilp/shfmt:latest@sha256:d1e0aef522a005f61480a8f5e76fe1b7caaa8d9a38e0b527d42b39b4ef59554a
-      - run: git diff --exit-code
-
-  prettier:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2.3.2
-      - run: .github/matchers.sh
-      - name: lint
-        uses: docker://ghcr.io/whilp/prettier:latest@sha256:0c8d478396b9ba381fba2d302c6086f1469b06d00af2e2c3a995536b8d6534b8
-      - run: git diff --exit-code
-
-  eslint:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2.3.2
-      - run: .github/matchers.sh
-      - name: lint
-        uses: docker://ghcr.io/whilp/eslint:latest@sha256:9ab264d5f91f0b8f0ffceae5994c4162346a149f36b8e9fb3dde24db7789a963
-      - run: git diff --exit-code
-
-  golangci-lint:
-    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        image:
+          - docker://ghcr.io/whilp/buildifier:latest
+          # - docker://ghcr.io/whilp/black:latest@sha256:aba7829a5d074b12a697ee21811e7c9b575795d5778d47b069e2b48d76e7b276
+          # - docker://ghcr.io/whilp/bandit:latest@sha256:d84b88b9734eb3248c5e8b7f2b03f7ef28283e174291ad68fa864a52419f072c
+          # - docker://ghcr.io/whilp/shfmt:latest@sha256:d1e0aef522a005f61480a8f5e76fe1b7caaa8d9a38e0b527d42b39b4ef59554a
+          # - docker://ghcr.io/whilp/prettier:latest@sha256:0c8d478396b9ba381fba2d302c6086f1469b06d00af2e2c3a995536b8d6534b8
+          # - docker://ghcr.io/whilp/eslint:latest@sha256:9ab264d5f91f0b8f0ffceae5994c4162346a149f36b8e9fb3dde24db7789a963
+          # - docker://ghcr.io/whilp/golangci-lint:latest@sha256:bdde489a6b54a5951ddc2311f5ba34eba71f1ef439e77d92067f44ac4a36a2ed
+    container:
+      image: ${{ matrix.image }}
     steps:
       - uses: actions/checkout@v2.3.2
       - run: .github/matchers.sh
       - name: clean up
         run: rm -rf cmd/tools
-      - name: lint
-        uses: docker://ghcr.io/whilp/golangci-lint:latest@sha256:bdde489a6b54a5951ddc2311f5ba34eba71f1ef439e77d92067f44ac4a36a2ed
+      # /entrypoint
       - name: restore
         run: git checkout cmd/tools
       - run: git diff --exit-code
