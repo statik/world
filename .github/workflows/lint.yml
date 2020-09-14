@@ -18,14 +18,13 @@ jobs:
           # - docker://ghcr.io/whilp/prettier:latest@sha256:0c8d478396b9ba381fba2d302c6086f1469b06d00af2e2c3a995536b8d6534b8
           # - docker://ghcr.io/whilp/eslint:latest@sha256:9ab264d5f91f0b8f0ffceae5994c4162346a149f36b8e9fb3dde24db7789a963
           # - docker://ghcr.io/whilp/golangci-lint:latest@sha256:bdde489a6b54a5951ddc2311f5ba34eba71f1ef439e77d92067f44ac4a36a2ed
-    container:
-      image: ${{ matrix.image }}
     steps:
       - uses: actions/checkout@v2.3.2
       - run: .github/matchers.sh
       - name: clean up
         run: rm -rf cmd/tools
-      # /entrypoint
+      - name: lint
+        run: .github/docker.sh ${{ matrix.image }}
       - name: restore
         run: git checkout cmd/tools
       - run: git diff --exit-code
