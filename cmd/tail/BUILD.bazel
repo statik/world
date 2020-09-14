@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "tail_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/whilp/world/cmd/tail",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "tail",
+    embed = [":tail_lib"],
+    pure = "on",
+    static = "on",
+    visibility = ["//visibility:public"],
+)

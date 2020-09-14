@@ -23,7 +23,13 @@ container_image(
     args = ARGS + ["."],
     base = "@cc_image_base//image",
     entrypoint = ["/buildifier"],
-    files = [FILE],
+    env = {
+        "PATH": "/",
+    },
+    files = [
+        FILE,
+        "//cmd/tail",
+    ],
     labels = labels({"org.opencontainers.image.description": "buildifier linter"}),
 )
 
