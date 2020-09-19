@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-18.04
     container:
       image: renovate/renovate:latest@sha256:67afc930374fef572c855ff989b99e143cfe74afed3a906eccdc02d70271b36b
+      options: --user 1001:1001
       env:
         RENOVATE_REPOSITORIES: whilp/world
         RENOVATE_GITAUTHOR: "Renovate Bot <bot@renovate.com>"
