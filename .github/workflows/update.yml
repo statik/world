@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - renovate.js
+      - .github/workflows/update.yml
   schedule:
     - cron: "19 */3 * * *"
 
@@ -25,6 +26,10 @@ jobs:
           bot-installation-id: ${{ secrets.BOT_INSTALLATION_ID }}
           bot-client-id: ${{ secrets.BOT_CLIENT_ID }}
           bot-client-secret: ${{ secrets.BOT_CLIENT_SECRET }}
+      - name: Prep
+        run: |
+          mkdir ~/.cache
+          chmod o+w ~/.cache
       - name: renovate
         uses: docker://renovate/renovate:latest@sha256:67afc930374fef572c855ff989b99e143cfe74afed3a906eccdc02d70271b36b
         env:
@@ -37,4 +42,3 @@ jobs:
           RENOVATE_CONFIG_FILE: renovate.js
           RENOVATE_LOGLEVEL: debug
           RENOVATE_TRUSTLEVEL: high
-          XDG_CACHE_HOME: /tmp/.cache
