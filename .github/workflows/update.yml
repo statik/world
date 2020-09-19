@@ -29,4 +29,7 @@ jobs:
 
     steps:
       - name: renovate
-        run: id
+        run: |
+          id
+          ls -l ~/ ~/.cache
+          mkdir -p ~/.cache/sigh
