@@ -28,18 +28,5 @@ jobs:
         GOCACHE: /tmp/.cache
 
     steps:
-      - uses: actions/checkout@v2.3.2
-      - uses: actions/setup-python@v2.1.2
-        with:
-          python-version: "3.7"
-      - run: .github/matchers.sh
-      - uses: ./cmd/bot
-        id: bot
-        with:
-          bot-id: ${{ secrets.BOT_ID }}
-          bot-key: ${{ secrets.BOT_KEY }}
-          bot-installation-id: ${{ secrets.BOT_INSTALLATION_ID }}
-          bot-client-id: ${{ secrets.BOT_CLIENT_ID }}
-          bot-client-secret: ${{ secrets.BOT_CLIENT_SECRET }}
       - name: renovate
         run: id
