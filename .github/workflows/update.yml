@@ -27,17 +27,17 @@ jobs:
           bot-client-id: ${{ secrets.BOT_CLIENT_ID }}
           bot-client-secret: ${{ secrets.BOT_CLIENT_SECRET }}
       - name: renovate
-        container: docker://renovate/renovate:latest@sha256:67afc930374fef572c855ff989b99e143cfe74afed3a906eccdc02d70271b36b
         run: id
-        env:
-          RENOVATE_REPOSITORIES: whilp/world
-          RENOVATE_GITAUTHOR: "Renovate Bot <bot@renovate.com>"
-          RENOVATE_USERNAME: renovatebot
-          # https://github.com/renovatebot/renovate/blob/a2b267137005458eca16a39482da458e2ee4e819/lib/util/http/auth.ts#L20
-          RENOVATE_TOKEN: x-access-token:${{ steps.bot.outputs.token }}
-          RENOVATE_ONBOARDING: false
-          RENOVATE_CONFIG_FILE: renovate.js
-          RENOVATE_LOGLEVEL: debug
-          RENOVATE_TRUSTLEVEL: high
-          XDG_CACHE_HOME: /tmp/.cache
-          GOCACHE: /tmp/.cache
+        container: docker://renovate/renovate:latest@sha256:67afc930374fef572c855ff989b99e143cfe74afed3a906eccdc02d70271b36b
+          env:
+            RENOVATE_REPOSITORIES: whilp/world
+            RENOVATE_GITAUTHOR: "Renovate Bot <bot@renovate.com>"
+            RENOVATE_USERNAME: renovatebot
+            # https://github.com/renovatebot/renovate/blob/a2b267137005458eca16a39482da458e2ee4e819/lib/util/http/auth.ts#L20
+            RENOVATE_TOKEN: x-access-token:${{ steps.bot.outputs.token }}
+            RENOVATE_ONBOARDING: false
+            RENOVATE_CONFIG_FILE: renovate.js
+            RENOVATE_LOGLEVEL: debug
+            RENOVATE_TRUSTLEVEL: high
+            XDG_CACHE_HOME: /tmp/.cache
+            GOCACHE: /tmp/.cache
