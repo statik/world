@@ -26,6 +26,7 @@ jobs:
         RENOVATE_TRUSTLEVEL: high
         XDG_CACHE_HOME: /tmp/.cache
         GOCACHE: /tmp/.cache
+        HOME: /tmp
 
     steps:
       - name: renovate
