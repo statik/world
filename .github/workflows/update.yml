@@ -31,5 +31,8 @@ jobs:
       - name: renovate
         run: |
           id
+          go env
+          env
+          mkdir -p ~/.cache
           ls -l ~/ ~/.cache
           mkdir -p ~/.cache/sigh
