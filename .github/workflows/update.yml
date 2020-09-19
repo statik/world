@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - renovate.js
+      - .github/workflows/update.yml
   schedule:
     - cron: "19 */3 * * *"
 
