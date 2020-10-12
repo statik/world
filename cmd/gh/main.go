@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 
@@ -20,13 +21,40 @@ func main() {
 	}
 }
 
+func dispatch(env Env) error {
+	command, ok := env["COMMAND"]
+	if !ok {
+		return fmt.Errorf("expected COMMAND environment variable")
+	}
+}
+
+type dispatch struct {
+	env Env
+}
+
+func (d *dispatch) check() error {
+		log.Debug("we're ok!")
+		return nil
+
+}
+
 func run() error {
 	log.SetLevel(level)
 	log.SetHandler(cli.New(os.Stderr))
 
+	env := environ()
+
 	if os.Getenv("CHECK") != "" {
-		log.Debug("we're ok!")
-		return nil
+	}
+
+	return dispatch(env)
+
+	cmd, ok := env["COMMAND"]
+	if !ok {
+
+	}
+	if cmd == "" {
+		log.Log.Warnf("expected COMMAND environment variable to be set")
 	}
 
 	token := os.Getenv("GITHUB_TOKEN")
@@ -55,7 +83,6 @@ func run() error {
 		dumpPayload(os.Stderr, payload)
 	}
 
-	env := environ()
 	switch e := event.(type) {
 	case *github.PullRequestEvent:
 		return handlePullRequest(ctx, client, env, e)
