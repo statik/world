@@ -13,6 +13,3 @@ export LANGUAGE=C.UTF-8
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 chmod 400 ~/.ssh/config
-
-mkdir -p ~/.xdg
-chmod 700 ~/.xdg
