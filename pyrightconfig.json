@@ -1,0 +1,9 @@
+{
+  "stubPath": "",
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "reportGeneralTypeIssues": false,
+  "useLibraryCodeForTypes": true,
+  "pythonVersion": "3.8",
+  "pythonPlatform": "Linux"
+}
