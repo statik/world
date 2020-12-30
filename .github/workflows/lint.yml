@@ -78,7 +78,7 @@ jobs:
   pyright:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
       - run: .github/matchers.sh
       - name: lint
         uses: docker://ghcr.io/whilp/pyright:latest
