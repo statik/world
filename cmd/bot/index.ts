@@ -16,7 +16,7 @@ async function main() {
     console.log("ok");
     return "ok";
   }
-  const [owner, repo ] = env.GITHUB_REPOSITORY.split("/");
+  const [owner, repo] = env.GITHUB_REPOSITORY.split("/");
   const app = createAppAuth({ appId: env.BOT_ID, privateKey: env.BOT_KEY });
   const authApp = await app({ type: "app" });
   const appAuthOcto = new Octokit({
@@ -37,7 +37,7 @@ async function main() {
 
 function succeed(token: string) {
   core.setSecret(token);
-  core.setOutput('token', token)
+  core.setOutput('token', token);
 }
 
 function fail(error: Error) {
